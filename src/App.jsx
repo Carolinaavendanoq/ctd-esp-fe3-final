@@ -1,4 +1,4 @@
-import  React, { useState } from "react";
+import  React, { useState, useMemo } from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
@@ -11,7 +11,7 @@ function App() {
     if (theme === themes.dark) setTheme(themes.light)
     if (theme === themes.light) setTheme(themes.dark)
   }
-
+  
   const providerValue = useMemo(()=>({theme,
     handleChangeTheme}),[theme,handleChangeTheme])
 
