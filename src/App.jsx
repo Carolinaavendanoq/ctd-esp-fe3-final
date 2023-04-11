@@ -7,11 +7,14 @@ import ThemeContext, { themes} from "./context";
 
 function App() {
   const [theme, setTheme] = useState(themes.light);
+  
   const handleChangeTheme = () => {
     if (theme === themes.dark) setTheme(themes.light)
     if (theme === themes.light) setTheme(themes.dark)
   }
   
+  
+
   const providerValue = useMemo(()=>({theme,
     handleChangeTheme}),[theme,handleChangeTheme])
 

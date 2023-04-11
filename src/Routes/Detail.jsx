@@ -7,21 +7,19 @@ import ThemeContext from '../context';
 const Detail = () => {
   const context = useContext(ThemeContext);
   const theme = context.theme;
-  const [dentist, setDentist] = useState(undefined);
+  const [dentist, setDentist] = useState([]);
   const params = useParams();
   const id = params.id;
+
   const getDentist = async () => {
     const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
     const data = await res.json();
-    console.log("My data" + data);
     setDentist(data);
-    console.log("My dentist" + dentist);
   };
-  console.log(dentist);
+
 
   useEffect(()=> {
     getDentist();
-    console.log("My" + dentist);
   }, [params]);
 
  
@@ -30,6 +28,10 @@ const Detail = () => {
   return (
     <div style={{ background: theme.background, color: theme.font }}>
       <h1>Detail Dentist id </h1>
+      <p>{dentist.name}</p>
+      <p>{dentist.email}</p>
+      <p>{dentist.phone}</p>
+      <p>{dentist.website}</p>
       {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
       {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
       
